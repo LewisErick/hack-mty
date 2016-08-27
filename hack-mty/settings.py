@@ -55,7 +55,7 @@ ROOT_URLCONF = 'hack-mty.urls'
 TEMPLATES = (
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [ PROJECT_ROOT + '/templates/' ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -131,7 +131,3 @@ STATICFILES_DIRS = [
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-
-TEMPLATE_DIRS = (
-    PROJECT_ROOT + '/templates/'
-)
