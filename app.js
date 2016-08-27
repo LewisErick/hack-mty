@@ -1,10 +1,20 @@
-var express = require('express');
-var app = express();
+var http = require('http');
+var fs = require("fs");
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+http.createServer(function(request, response) {
+	sendFileContent(response, "views/fbutton.html", "text/html");
+}).listen(3000);
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
-});
+function sendFileContent(response, fileName, contentType){
+	fs.readFile(fileName, function(err, data){
+		if(err){
+			response.writeHead(404);
+			response.write("Not Found!");
+		}
+		else{
+			response.writeHead(200, {'Content-Type': contentType});
+			response.write(data);
+		}
+		response.end();
+	});
+}
