@@ -85,10 +85,50 @@
 		    fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
 	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </head>
 <body>
 	<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
 	</fb:login-button>
 	<div id="status"></div>
+
+	<!--Comment:
+	<input type="text" id="comment">-->
+	<button onclick="checkAPI()">Check API</button>
+
+	<script type="text/javascript">
+		checkAPI = function()
+		{
+			console.log("Let's see...");
+			var json = {
+				"documents": [
+				    {
+				      "language": "en",
+				      "id": "abc",
+				      "text": "I'm upset."
+				    }
+				]
+			};
+
+			$.ajax({
+	            url: "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment",
+	            beforeSend: function(xhrObj){
+	                // Request headers
+	                xhrObj.setRequestHeader("Content-Type","text/json");
+	                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","acb69d0598e844f1a36bd5161a83a692");
+	            },
+	            type: "POST",
+	            // Request body
+	            data: JSON.stringify(json),
+	        })
+	        .done(function(data) {
+	        	console.log(data);
+	            alert("success");
+	        })
+	        .fail(function() {
+	            alert("error");
+	        });
+		}
+	</script>
 </body>
 </html>
