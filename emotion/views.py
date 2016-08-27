@@ -9,6 +9,6 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 
+
 def test(request):
-    """Redirecciona a la plantilla de dashboard"""
-    return HttpResponse('Ush')
+    return render(request, 'emotion/fbutton.html')
