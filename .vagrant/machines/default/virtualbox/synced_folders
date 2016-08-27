@@ -1,0 +1,1 @@
+{"virtualbox":{"site":{"create":false,"owner":null,"group":null,"nfs":false,"transient":false,"extra":null,"id":"site","guestpath":"/home/vagrant/site","hostpath":"C:/Users/LuisErick/Documents/GitHub/hack-mty","disabled":false,"__vagrantfile":true}}}
