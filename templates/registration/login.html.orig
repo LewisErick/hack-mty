@@ -1,0 +1,74 @@
+{% load staticfiles %}
+
+{% block custom_css %}
+    <link rel="stylesheet" href="{% static 'assets/css/user_login.css' %}">
+{% endblock %}
+
+{% block main_content %}
+    <div class="login-box">
+        <div class="lb-header">
+            <a href="#" class="active" id="login-box-link">Iniciar sesión</a>
+            <a href="#" id="signup-box-link">Registro</a>
+        </div>
+         <div class="social-login align-center">
+            <div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false"></div>
+            <div id="fb-root"></div>
+        </div>
+        <!-- Login -->
+        <form class="email-login">
+            <div class="u-form-group">
+                <input type="text" placeholder="Usuario"/>
+            </div>
+            <div class="u-form-group">
+                <input type="password" placeholder="Contraseña"/>
+            </div >
+            <div class="u-form-group">
+                <button>Log in</button>
+            </div>
+            <div class="u-form-group">
+                <a href="#" class="forgot-password">Olvide mi contraseña</a>
+            </div>
+        </form>
+        <!-- Sign Up -->
+        <form class="email-signup">
+            <div class="u-form-group">
+                <input type="text" placeholder="Usuario"/>
+            </div>
+            <div class="u-form-group">
+                <input type="password" placeholder="Contraseña"/>
+            </div>
+            <div class="u-form-group">
+                <input type="password" placeholder="Confirmar contraseña"/>
+            </div>
+            <div class="u-form-group">
+                <input type="text" placeholder="Ciudad"/>
+            </div>
+            <div class="u-form-group">
+                <input type="text" placeholder="Edad"/>
+            </div>
+            <div class="u-form-group">
+                <button>Sign Up</button>
+            </div>
+        </form>
+       
+    </div>
+{% endblock %}
+
+{% endblock %}
+
+{% block custom_js %}
+<<<<<<< HEAD:templates/auth/user_login.html
+    <script type="text/javascript" src="{% static 'assets/js/fb_login.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/user_login.js' %}"></script>
+{% endblock %}
+=======
+    <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.7";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+{% endblock %}
+>>>>>>> 867b5349114b7e034bf185fc45ecd138241afe01:templates/registration/login.html
