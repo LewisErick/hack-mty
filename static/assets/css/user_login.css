@@ -92,7 +92,7 @@ body{
     padding: 0 10px;
     border-radius: 2px;
     color: #333;
-    font-size:0.8rem;
+    font-size:1.2rem;
     -webkit-transition:all 0.1s linear;
     -moz-transition:all 0.1s linear;
     transition:all 0.1s linear;
@@ -118,5 +118,5 @@ body{
     text-align: left;
     text-decoration: underline;
     color: #888;
-    font-size: 0.75rem;
+    font-size: 1rem;
 }
