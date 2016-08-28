@@ -1,0 +1,8 @@
+from .category import Category
+from .rateable import Rateable
+<<<<<<< HEAD
+from .rating import Rating
+=======
+from .rating import Rating
+from .client import Client
+>>>>>>> 0e5b0eeb43bf2eb302ae1aa205591b10ba08ad58
