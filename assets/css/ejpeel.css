@@ -1,0 +1,212 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,900|Montserrat:400,700,900|Open+Sans:400,700,900|Raleway:400,700,900);
+//-----------------------------------//
+//  VARIABLES
+//-----------------------------------//
+//Colors--------------------//
+//Deluxe
+$color_dlx_dark: #222930;
+$color_dlx_light: #646C82;
+$color_dlx_accent: #E54B4B;
+$color_dlx_black: #202227;
+//Base
+$color_base_white: #F0F1FA;
+$color_base_charGrey: #B0B0BA;
+$color_base_lightGrey: #E2E2E2;
+$color_base_success: #2ECC71;
+$color_base_error: #F02D3A;
+//General-------------------//
+$border_radius: 2px;
+//-----------------------------------//
+//  PLACEHOLDERS
+//-----------------------------------//
+%border_radius {
+	border-radius: $border_radius;
+}
+
+
+/*-----------------------------------//
+//  MIXINS
+//-----------------------------------*/
+
+@mixin transition($dur: .2s, $tar: all, $sty: ease-out) {
+	transition: $tar $dur $sty;
+	-moz-transition: $tar $dur $sty;
+	-ms-transition: $tar $dur $sty;
+	-webkit-transition: $tar $dur $sty;
+}
+
+
+/*-----------------------------------//
+//  D.R.Y. CLASSES
+//-----------------------------------*/
+
+
+/*Text Aligns*/
+
+.text {
+	&Left {
+		text-align: left;
+	}
+	&Right {
+		text-align: right;
+	}
+	&Center {
+		text-align: center;
+	}
+}
+
+
+/*-----------------------------------//
+//  GENERAL
+//-----------------------------------*/
+
+body {
+	font: 14px/1.5em "Open Sans";
+	background: $color_base_white;
+}
+
+a {
+	text-decoration: none;
+	color: $color_dlx_accent;
+}
+
+p {
+	em {
+		background: $color_base_lightGrey * 1.07;
+		color: $color_base_charGrey / 1.3;
+		padding: 0 2px;
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: "Montserrat";
+}
+
+hr {
+	margin: 1.5em 0;
+}
+
+.hide {
+	display: none;
+}
+
+
+/*-----------------------------------//
+//  TEMPLATE STYLES
+//-----------------------------------*/
+
+
+/* Buttons and Inputs */
+
+textarea,
+button,
+a.btn,
+select,
+input[type="text"],
+input[type="submit"],
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+input[type="file"]::-webkit-file-upload-button {
+	font-family: inherit !important;
+	font-size: 13px;
+	border: 1px solid $color_base_charGrey;
+	box-sizing: border-box;
+	padding: 5px;
+}
+
+a.btn,
+button,
+input[type="submit"],
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+input[type="file"]::-webkit-file-upload-button {
+	background: transparent;
+	display: inline-block;
+	padding: 6px 10px;
+	color: inherit;
+	font-weight: bold !important;
+	font-family: Montserrat;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+
+/* Row */
+
+.row {
+	margin-bottom: 1.5%;
+	overflow: hidden;
+	&:last-child {
+		margin: 0;
+	}
+	// .box {
+	// 	width: 100% !important;
+	// 	max-width: 100% !important;
+	// 	margin: 0;
+	// }
+}
+
+@media screen and (min-width: 480px) {
+	.hlf,
+	.trd,
+	.fth {
+		float: left;
+		margin-right: 1.5%;
+		&:last-child {
+			margin: 0;
+			float: right;
+		}
+	}
+	.hlf {
+		width: 49.25%;
+	}
+	.trd {
+		width: 32.3%;
+	}
+	.fth {
+		width: 23.8%;
+	}
+}
+
+
+/* Box */
+
+.box {
+	width: 100%;
+	background: #fff;
+	box-sizing: border-box;
+	padding: 3%;
+	margin: 0 auto;
+	margin-bottom: 1.6%;
+	box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.5);
+	overflow: hidden;
+	@media screen and (min-width: 480px) {
+		padding: 2%;
+		margin-bottom: 2%;
+		max-width: 500px;
+	}
+	@media screen and (min-width: 765px) {
+		padding: 1.5%;
+		margin-bottom: 1.5%;
+	}
+	@media screen and (min-width: 1024px) {
+		padding: 1.25%;
+		margin-bottom: 1.25%;
+	}
+	@media screen and (min-width: 1180px) {
+		padding: 1%;
+		margin-bottom: 1%;
+	}
+}
+
+
+/*-----------------------------------//
+//  PEN STYLES
+//-----------------------------------*/
