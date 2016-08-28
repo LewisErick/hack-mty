@@ -1,7 +1,7 @@
 from django.conf.urls import url
 
-from . import views
+from .views import LoginView
 
 urlpatterns = [
-    url(r'', views.login, name='login'),
+    url(r'', LoginView.as_view(), name='login'),
 ]

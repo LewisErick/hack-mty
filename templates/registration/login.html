@@ -4,6 +4,7 @@
 
 {% block custom_css %}
     <link rel="stylesheet" type="text/css" href="{% static 'assets/css/user_login.css' %}">
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 {% endblock %}
 
 {% block custom_js %}
@@ -11,14 +12,13 @@
         // This is called with the results from from FB.getLoginStatus().
         function statusChangeCallback(response) {
           console.log('statusChangeCallback');
-          console.log(response);
           // The response object is returned with a status field that lets the
           // app know the current login status of the person.
           // Full docs on the response object can be found in the documentation
           // for FB.getLoginStatus().
           if (response.status === 'connected') {
             // Logged into your app and Facebook.
-            onConnect();
+            onConnect(true);
           } else if (response.status === 'not_authorized') {
             // The person is logged into Facebook, but not your app.
             onNotAuthorized();
@@ -28,10 +28,43 @@
             onNotLoggedIn();
           }
         }
-        var onConnect = function()
+        var onConnect = function(fb)
         {
-          //Change of view goes here.
-          console.log("Welcome! You're logged in.");
+            console.log("Welcome! You're logged in.");
+            if (fb)
+            {
+                FB.api('/me', function(response) {
+                    $.ajax(
+                    {
+                        url: "{% url 'login'}",
+                        data: JSON.stringify(response),
+                        dataType: "text/json",
+                        async: false,
+                        success: function(data)
+                        {
+                            window.location = data;
+                        }
+                    });
+                });
+            }
+            else
+            {
+                json_data = {
+                    username: $("#username").val();
+                    password: $("#password").val(); 
+                };
+                $.ajax(
+                {
+                    url: "{% url 'login'}",
+                    data: JSON.stringify(json_data),
+                    dataType: "text/json",
+                    async: false,
+                    success: function(data)
+                    {
+                        window.location = data;
+                    }
+                });
+            }
         }
         var onNotAuthorized = function()
         {
@@ -86,25 +119,73 @@
 
 {% block main_content %}
     <div class="container">
-    <div class="login-box">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="row" style="background-color: white; padding: 15px;">
         <div class="lb-header">
-            <a href="#" class="active" id="login-box-link">Iniciar sesión</a>
-            <a href="#" id="signup-box-link">Registro</a>
-        </div>
-         <div class="social-login align-center">
-            <div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false"></div>
-            <div id="fb-root"></div>
+            <a href="#" class="active" id="login-box-link" style="">INICIAR SESIÓN</a>
+            <a href="#" id="signup-box-link">REGISTRO</a>
         </div>
         <!-- Login -->
         <form class="email-login">
             <div class="u-form-group">
-                <input type="text" placeholder="Usuario"/>
+                <input type="text" placeholder="Usuario" name="username" id="username"/>
             </div>
             <div class="u-form-group">
-                <input type="password" placeholder="Contraseña"/>
+                <input type="password" placeholder="Contraseña" id="password" name="password"/>
             </div >
             <div class="u-form-group">
-                <button>Log in</button>
+
+            <button onclick="FB.login()" style="background-color: #4080ff;">
+            <svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   width="20px"
+   height="20px"
+   viewBox="0 0 266.893 266.895"
+   enable-background="new 0 0 266.893 266.895"
+   xml:space="preserve"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="fb.svg"><metadata
+     id="metadata9"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
+     id="defs7" /><sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="690"
+     inkscape:window-height="480"
+     id="namedview5"
+     showgrid="false"
+     inkscape:zoom="0.8842429"
+     inkscape:cx="133.4465"
+     inkscape:cy="133.44749"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="Layer_1" /><path
+     id="f"
+     d="M182.409,262.307v-99.803h33.499l5.016-38.895h-38.515V98.777c0-11.261,3.127-18.935,19.275-18.935  l20.596-0.009V45.045c-3.562-0.474-15.788-1.533-30.012-1.533c-29.695,0-50.025,18.126-50.025,51.413v28.684h-33.585v38.895h33.585  v99.803H182.409z"
+     fill="#FFFFFF" /></svg>
+            Log In with Facebook</button>
+        </div>
+            <div class="u-form-group">
+                <button onclick="">Log in</button>
             </div>
             <div class="u-form-group">
                 <a href="#" class="forgot-password">Olvide mi contraseña</a>
@@ -131,8 +212,9 @@
                 <button>Sign Up</button>
             </div>
         </form>
-       
     </div>
+    </div>
+    <div class="col-md-2"></div>
     </div>
 
     <script type="text/javascript">
