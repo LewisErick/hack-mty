@@ -133,5 +133,5 @@ STATICFILES_DIRS = [
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 TEMPLATE_DIRS = (
-    PROJECT_ROOT + '/templates/'
+    PROJECT_ROOT + '/templates/',
 )
