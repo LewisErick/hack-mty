@@ -27,6 +27,11 @@ SECRET_KEY = "2ay79d#21w$mitnspu=(*5%*c6%a2c@5^!@z@g^fx-e=prtt)3"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
+
+
 # Application definition
 
 INSTALLED_APPS = (
@@ -38,7 +43,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'emotion',
     'ratings',
-    'auth',
+    'client-auth',
 )
 
 MIDDLEWARE_CLASSES = (

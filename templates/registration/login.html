@@ -1,8 +1,10 @@
+{% load staticfiles %}
+
 {% block custom_css %}
     <link rel="stylesheet" href="{% static 'assets/css/user_login.css' %}">
 {% endblock %}
 
-{% block content %}
+{% block main_content %}
     <div class="login-box">
         <div class="lb-header">
             <a href="#" class="active" id="login-box-link">Iniciar sesión</a>
@@ -50,6 +52,7 @@
         </form>
        
     </div>
+{% endblock %}
 
 {% block custom_js %}
     <script>(function(d, s, id) {
